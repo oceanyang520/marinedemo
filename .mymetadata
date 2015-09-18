@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="marinedemo"
+  id="myeclipse.1423536000728"
+  context-root="/marinedemo"
+  j2ee-spec="5.0"
+  archive="marinedemo.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

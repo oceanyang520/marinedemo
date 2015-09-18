@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+<template autoinsert="true" context="fieldcomment_context" deleted="false" description="ziduandezhushi" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.fieldcomment" name="fieldcomment">
+/**  
+* @Fields ${field} : ${todo}(用一句话描述这个变量表示什么)  
+*/  
+</template>
+</templates>
