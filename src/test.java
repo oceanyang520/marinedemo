@@ -11,7 +11,7 @@ class test {
 
 	private String c ;
 	
-	String d; //friendly����
+	String d; //friendly���� 
 	
 //	public static void main(String args[]){
 //			testThread tt = new testThread();
