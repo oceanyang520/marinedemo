@@ -7,7 +7,7 @@
   <packaging>war</packaging>
   <name>marinefirstmaven</name>
   <description>marinedemomaven</description>
-
+ 
      <dependencies>
      <dependency>
      <groupId>org.jfree</groupId>
