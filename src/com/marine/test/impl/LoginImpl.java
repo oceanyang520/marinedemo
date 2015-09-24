@@ -20,8 +20,7 @@ public class LoginImpl {
 	    {  
 	        Session session = sessionFactory.getCurrentSession();  
 	        List<User> list = new ArrayList<User>();   
-	          
-	        //通过Hibernate的Criteria查询    
+	        
 	        Criteria criteria = session.createCriteria(User.class);    
 	        if (!(null == name && "".equals(name)))   
 	        {    
