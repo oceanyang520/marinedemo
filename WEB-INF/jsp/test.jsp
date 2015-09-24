@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is strutstest JSP page. <br>
+    This is strutstest  JSP page. <br>
   </body>
 </html>

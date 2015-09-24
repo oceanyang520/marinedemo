@@ -26,233 +26,233 @@ import org.jfree.data.general.DefaultPieDataset;
 public class ChartsTest
 {
 
-	//test
-	public static CategoryDataset createDataSet2() {
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset.setValue(5000, "±±¾©","Corejava");
-		dataset.setValue(3000, "ÉÏº£","Corejava");
-		dataset.setValue(2000, "¹ãÖİ","Corejava");
-		
-		dataset.setValue(10000, "±±¾©","JavaWeb");
-		dataset.setValue(6000, "ÉÏº£","JavaWeb");
-		dataset.setValue(4000, "¹ãÖİ","JavaWeb");
-		
-		dataset.setValue(15000, "±±¾©","Ò×ÓÃstruts");
-		dataset.setValue(5000, "ÉÏº£","Ò×ÓÃstruts");
-		dataset.setValue(10000, "¹ãÖİ","Ò×ÓÃstruts");
-		
-		dataset.setValue(20000, "±±¾©","¾«Í¨JSF");
-		dataset.setValue(10000, "ÉÏº£","¾«Í¨JSF");
-		dataset.setValue(10000, "¹ãÖİ","¾«Í¨JSF");
+    //test
+    public static CategoryDataset createDataSet2() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.setValue(5000, "åŒ—äº¬","Corejava");
+        dataset.setValue(3000, "ä¸Šæµ·","Corejava");
+        dataset.setValue(2000, "å¹¿å·","Corejava");
+        
+        dataset.setValue(10000, "åŒ—äº¬","JavaWeb");
+        dataset.setValue(6000, "ä¸Šæµ·","JavaWeb");
+        dataset.setValue(4000, "å¹¿å·","JavaWeb");
+        
+        dataset.setValue(15000, "åŒ—äº¬","æ˜“ç”¨struts");
+        dataset.setValue(5000, "ä¸Šæµ·","æ˜“ç”¨struts");
+        dataset.setValue(10000, "å¹¿å·","æ˜“ç”¨struts");
+        
+        dataset.setValue(20000, "åŒ—äº¬","ç²¾é€šJSF");
+        dataset.setValue(10000, "ä¸Šæµ·","ç²¾é€šJSF");
+        dataset.setValue(10000, "å¹¿å·","ç²¾é€šJSF");
 
-		return dataset;
-	}
-	
-	/**
-	 * step1:×éÖ¯Êı¾İ¼¯
-	 * @param list
-	 * @return
-	 */
-	
-	public DefaultCategoryDataset createDataset(HashMap<Object, Object> hashMap){
-		
-		List<HashMap<Object, Object>> list = null;
-		//´«Èëlist½øĞĞ±éÀú
-    	DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    	//Êı¾İ¸ñÊ½
-    	//dataset.setValue(5000, "±±¾©","Corejava");
-    	//dataset.setValue(value, rowKey, columnKey);
-    	//ÒÔrowKeyÎª±ê×¼
-    	for (int i = 0; i < list.size(); i++) {
-    		
-			dataset.setValue(Integer.valueOf(list.get(i).get("value").toString()), list.get(i).get("rowKey").toString(), list.get(i).get("columnKey").toString());
-		}
-    	    	
-    	return dataset;
-	}
-	
-	/**
-	 * step2:´´½¨Í¼±í
-	 * @param dataset
-	 * @return
-	 */
-	public static JFreeChart createChart(CategoryDataset dataset) {
-		//JFreeChart chart = ChartFactory.createBarChart3D(	//3DÖù×´Í¼
-		//JFreeChart chart = ChartFactory.createLineChart3D(  //3DÕÛÏßÍ¼
-		JFreeChart chart = ChartFactory.createLineChart(
-				"1Ô­´´Í¼ÊéÏúÁ¿Í³¼Æ", //Í¼±íµÄ±êÌâ
-				"1Í¼ÊéÃû",  //Ä¿Â¼ÖáµÄÏÔÊ¾±êÇ© 
-				"1ÏúÁ¿",   //ÊıÖµÖáµÄÏÔÊ¾±êÇ©
-				dataset, //Êı¾İ¼¯
-				PlotOrientation.VERTICAL,  //Í¼±í·½Ê½£ºV´¹Ö±;HË®Æ½ 
-				true, // ÊÇ·ñÏÔÊ¾Í¼Àı
-				false, // ÊÇ·ñÏÔÊ¾¹¤¾ßÌáÊ¾
-				false // ÊÇ·ñÉú³ÉURL
-				);
-		
-		//===============ÎªÁË·ÀÖ¹ÖĞÎÄÂÒÂë£º±ØĞëÉèÖÃ×ÖÌå
-		chart.setTitle(new TextTitle("Ô­´´Í¼ÊéÏúÁ¿Í³¼Æ", new Font("ºÚÌå", Font.ITALIC, 22)));
-	
-		LegendTitle legend = chart.getLegend(); // »ñÈ¡Í¼Àı
-		legend.setItemFont(new Font("ËÎÌå", Font.BOLD, 12)); //ÉèÖÃÍ¼ÀıµÄ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-	
-		CategoryPlot plot = (CategoryPlot) chart.getPlot(); // »ñÈ¡ÖùÍ¼µÄPlot¶ÔÏó(Êµ¼ÊÍ¼±í)
-		// ÉèÖÃÖùÍ¼±³¾°É«£¨×¢Òâ£¬ÏµÍ³È¡É«µÄÊ±ºòÒªÊ¹ÓÃ16Î»µÄÄ£Ê½À´²é¿´ÑÕÉ«±àÂë£¬ÕâÑù±È½Ï×¼È·£©
-		plot.setBackgroundPaint(new Color(255, 255, 204));
-		plot.setForegroundAlpha(0.65F); //ÉèÖÃÇ°¾°É«Í¸Ã÷¶È
-		
-		// ÉèÖÃºáĞéÏß¿É¼û
-		plot.setRangeGridlinesVisible(true);
-		// ĞéÏßÉ«²Ê
-		plot.setRangeGridlinePaint(Color.gray);
-		
-		CategoryAxis h = plot.getDomainAxis(); //»ñÈ¡xÖá
-		h.setMaximumCategoryLabelWidthRatio(1.0f);// ºáÖáÉÏµÄ Lable ÊÇ·ñÍêÕûÏÔÊ¾
-		h.setLabelFont(new Font("ËÎÌå", Font.BOLD, 12));//ÉèÖÃ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-		h.setTickLabelFont(new Font("ËÎÌå", Font.BOLD, 12));// ÖáÊıÖµ 
-		//h.setCategoryLabelPositions(CategoryLabelPositions.UP_45);//45¶ÈÇãĞ±
-		
-		plot.getRangeAxis().setLabelFont(new Font("ËÎÌå", Font.BOLD, 12)); //YÖáÉèÖÃ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-		
-		//ÖùÍ¼µÄ³ÊÏÖÆ÷
-		BarRenderer renderer = new BarRenderer(); 
-		// ÉèÖÃÖù×Ó¿í¶È 
-		//renderer.setMaximumBarWidth(0.05); 
-		// ÉèÖÃÖù×Ó¸ß¶È 
-		//renderer.setMinimumBarLength(0.2); 
-		// ÉèÖÃÖù×Ó±ß¿òÑÕÉ« 
-		renderer.setBaseOutlinePaint(Color.BLACK); 
-		// ÉèÖÃÖù×Ó±ß¿ò¿É¼û 
-		renderer.setDrawBarOutline(true); 
-		//ÉèÖÃÃ¿¸öÖùµÄÑÕÉ« 
-		renderer.setSeriesPaint(0, Color.BLUE); 
-		renderer.setSeriesPaint(1, Color.GREEN); 
-		renderer.setSeriesPaint(2, Color.RED); 
-		//ÉèÖÃÃ¿¸öµØÇøËù°üº¬µÄÆ½ĞĞÖùµÄÖ®¼ä¾àÀë 
-		renderer.setItemMargin(0.05); 
-		// ÏÔÊ¾Ã¿¸öÖùµÄÊıÖµ£¬²¢ĞŞ¸Ä¸ÃÊıÖµµÄ×ÖÌåÊôĞÔ 
-		renderer.setIncludeBaseInRange(true); 
-		renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator()); 
-		renderer.setBaseItemLabelsVisible(true); 
-		// ÉèÖÃÖùµÄÍ¸Ã÷¶È 
-		plot.setForegroundAlpha(1.0f); 
-		//¸øÖùÍ¼Ìí¼Ó³ÊÏÖÆ÷
-		plot.setRenderer(renderer); 
-		
-		// Ã»ÓĞÊı¾İµÄÊ±ºòÏÔÊ¾µÄÄÚÈİ
-		plot.setNoDataMessage("ÕÒ²»µ½¿ÉÓÃÊı¾İ...");
-		
-		return chart;
-	}
-	
-	/**
-	 * step3: Êä³öÍ¼±íµ½Swing Frame
-	 * @param chart
-	 */
-	public static void drawToFrame(JFreeChart chart){
-		//Êä³öÍ¼±íµ½Swing Frame
-		ChartFrame frame = new ChartFrame("Ô­´´Í¼ÊéÏúÁ¿Í³¼Æ", chart);
-		frame.pack();
-		frame.setVisible(true);
-	}
-	
-	/**
-	 * step3: Êä³öÍ¼±íµ½Ö¸¶¨µÄ´ÅÅÌ
-	 * @param destPath
-	 * @param chart
-	 */
-	public static void drawToOutputStream(String destPath, JFreeChart chart) {
-		FileOutputStream fos = null;
-		try {
-			fos = new FileOutputStream(destPath);
-			// ChartUtilities.writeChartAsJPEG(
-			ChartUtilities.writeChartAsPNG(fos, // Ö¸¶¨Ä¿±êÊä³öÁ÷
-					chart, // Í¼±í¶ÔÏó
-					600, // ¿í
-					500, // ¸ß
-					null); // ChartRenderingInfoĞÅÏ¢
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				fos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+        return dataset;
+    }
+    
+    /**
+     * step1:ç»„ç»‡æ•°æ®é›†
+     * @param list
+     * @return
+     */
+    
+    public DefaultCategoryDataset createDataset(HashMap<Object, Object> hashMap){
+        
+        List<HashMap<Object, Object>> list = null;
+        //ä¼ å…¥listè¿›è¡Œéå†
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        //æ•°æ®æ ¼å¼
+        //dataset.setValue(5000, "åŒ—äº¬","Corejava");
+        //dataset.setValue(value, rowKey, columnKey);
+        //ä»¥rowKeyä¸ºæ ‡å‡†
+        for (int i = 0; i < list.size(); i++) {
+            
+            dataset.setValue(Integer.valueOf(list.get(i).get("value").toString()), list.get(i).get("rowKey").toString(), list.get(i).get("columnKey").toString());
+        }
+                
+        return dataset;
+    }
+    
+    /**
+     * step2:åˆ›å»ºå›¾è¡¨
+     * @param dataset
+     * @return
+     */
+    public static JFreeChart createChart(CategoryDataset dataset) {
+        //JFreeChart chart = ChartFactory.createBarChart3D( //3DæŸ±çŠ¶å›¾
+        //JFreeChart chart = ChartFactory.createLineChart3D(  //3DæŠ˜çº¿å›¾
+        JFreeChart chart = ChartFactory.createLineChart(
+                "1åŸåˆ›å›¾ä¹¦é”€é‡ç»Ÿè®¡", //å›¾è¡¨çš„æ ‡é¢˜
+                "1å›¾ä¹¦å",  //ç›®å½•è½´çš„æ˜¾ç¤ºæ ‡ç­¾ 
+                "1é”€é‡",   //æ•°å€¼è½´çš„æ˜¾ç¤ºæ ‡ç­¾
+                dataset, //æ•°æ®é›†
+                PlotOrientation.VERTICAL,  //å›¾è¡¨æ–¹å¼ï¼šVå‚ç›´;Hæ°´å¹³ 
+                true, // æ˜¯å¦æ˜¾ç¤ºå›¾ä¾‹
+                false, // æ˜¯å¦æ˜¾ç¤ºå·¥å…·æç¤º
+                false // æ˜¯å¦ç”ŸæˆURL
+                );
+        
+        //===============ä¸ºäº†é˜²æ­¢ä¸­æ–‡ä¹±ç ï¼šå¿…é¡»è®¾ç½®å­—ä½“
+        chart.setTitle(new TextTitle("åŸåˆ›å›¾ä¹¦é”€é‡ç»Ÿè®¡", new Font("é»‘ä½“", Font.ITALIC, 22)));
+    
+        LegendTitle legend = chart.getLegend(); // è·å–å›¾ä¾‹
+        legend.setItemFont(new Font("å®‹ä½“", Font.BOLD, 12)); //è®¾ç½®å›¾ä¾‹çš„å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+    
+        CategoryPlot plot = (CategoryPlot) chart.getPlot(); // è·å–æŸ±å›¾çš„Plotå¯¹è±¡(å®é™…å›¾è¡¨)
+        // è®¾ç½®æŸ±å›¾èƒŒæ™¯è‰²ï¼ˆæ³¨æ„ï¼Œç³»ç»Ÿå–è‰²çš„æ—¶å€™è¦ä½¿ç”¨16ä½çš„æ¨¡å¼æ¥æŸ¥çœ‹é¢œè‰²ç¼–ç ï¼Œè¿™æ ·æ¯”è¾ƒå‡†ç¡®ï¼‰
+        plot.setBackgroundPaint(new Color(255, 255, 204));
+        plot.setForegroundAlpha(0.65F); //è®¾ç½®å‰æ™¯è‰²é€æ˜åº¦
+        
+        // è®¾ç½®æ¨ªè™šçº¿å¯è§
+        plot.setRangeGridlinesVisible(true);
+        // è™šçº¿è‰²å½©
+        plot.setRangeGridlinePaint(Color.gray);
+        
+        CategoryAxis h = plot.getDomainAxis(); //è·å–xè½´
+        h.setMaximumCategoryLabelWidthRatio(1.0f);// æ¨ªè½´ä¸Šçš„ Lable æ˜¯å¦å®Œæ•´æ˜¾ç¤º
+        h.setLabelFont(new Font("å®‹ä½“", Font.BOLD, 12));//è®¾ç½®å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+        h.setTickLabelFont(new Font("å®‹ä½“", Font.BOLD, 12));// è½´æ•°å€¼ 
+        //h.setCategoryLabelPositions(CategoryLabelPositions.UP_45);//45åº¦å€¾æ–œ
+        
+        plot.getRangeAxis().setLabelFont(new Font("å®‹ä½“", Font.BOLD, 12)); //Yè½´è®¾ç½®å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+        
+        //æŸ±å›¾çš„å‘ˆç°å™¨
+        BarRenderer renderer = new BarRenderer(); 
+        // è®¾ç½®æŸ±å­å®½åº¦ 
+        //renderer.setMaximumBarWidth(0.05); 
+        // è®¾ç½®æŸ±å­é«˜åº¦ 
+        //renderer.setMinimumBarLength(0.2); 
+        // è®¾ç½®æŸ±å­è¾¹æ¡†é¢œè‰² 
+        renderer.setBaseOutlinePaint(Color.BLACK); 
+        // è®¾ç½®æŸ±å­è¾¹æ¡†å¯è§ 
+        renderer.setDrawBarOutline(true); 
+        //è®¾ç½®æ¯ä¸ªæŸ±çš„é¢œè‰² 
+        renderer.setSeriesPaint(0, Color.BLUE); 
+        renderer.setSeriesPaint(1, Color.GREEN); 
+        renderer.setSeriesPaint(2, Color.RED); 
+        //è®¾ç½®æ¯ä¸ªåœ°åŒºæ‰€åŒ…å«çš„å¹³è¡ŒæŸ±çš„ä¹‹é—´è·ç¦» 
+        renderer.setItemMargin(0.05); 
+        // æ˜¾ç¤ºæ¯ä¸ªæŸ±çš„æ•°å€¼ï¼Œå¹¶ä¿®æ”¹è¯¥æ•°å€¼çš„å­—ä½“å±æ€§ 
+        renderer.setIncludeBaseInRange(true); 
+        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator()); 
+        renderer.setBaseItemLabelsVisible(true); 
+        // è®¾ç½®æŸ±çš„é€æ˜åº¦ 
+        plot.setForegroundAlpha(1.0f); 
+        //ç»™æŸ±å›¾æ·»åŠ å‘ˆç°å™¨
+        plot.setRenderer(renderer); 
+        
+        // æ²¡æœ‰æ•°æ®çš„æ—¶å€™æ˜¾ç¤ºçš„å†…å®¹
+        plot.setNoDataMessage("æ‰¾ä¸åˆ°å¯ç”¨æ•°æ®...");
+        
+        return chart;
+    }
+    
+    /**
+     * step3: è¾“å‡ºå›¾è¡¨åˆ°Swing Frame
+     * @param chart
+     */
+    public static void drawToFrame(JFreeChart chart){
+        //è¾“å‡ºå›¾è¡¨åˆ°Swing Frame
+        ChartFrame frame = new ChartFrame("åŸåˆ›å›¾ä¹¦é”€é‡ç»Ÿè®¡", chart);
+        frame.pack();
+        frame.setVisible(true);
+    }
+    
+    /**
+     * step3: è¾“å‡ºå›¾è¡¨åˆ°æŒ‡å®šçš„ç£ç›˜
+     * @param destPath
+     * @param chart
+     */
+    public static void drawToOutputStream(String destPath, JFreeChart chart) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(destPath);
+            // ChartUtilities.writeChartAsJPEG(
+            ChartUtilities.writeChartAsPNG(fos, // æŒ‡å®šç›®æ ‡è¾“å‡ºæµ
+                    chart, // å›¾è¡¨å¯¹è±¡
+                    600, // å®½
+                    500, // é«˜
+                    null); // ChartRenderingInfoä¿¡æ¯
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-	
+    
     public static void main1(String[] args)
     {
-    		
-//    	// step1:´´½¨Êı¾İ¼¯¶ÔÏó
-//    			CategoryDataset dataset = createDataSet2();
-//    		
-//    			// step2:´´½¨±ıÍ¼
-//    			JFreeChart chart = createChart(dataset);
-//    		
-//    			// step3: Êä³öÍ¼±íµ½Swing´°¿Ú
-//    			//drawToFrame(chart);
-//    		
-//    			// step3: Êä³öÍ¼±íµ½´ÅÅÌ
-//    			drawToOutputStream("D://testcharts//mybook-bar.png", chart);
-    	    	    	
-        DefaultPieDataset dpd=new DefaultPieDataset(); //½¨Á¢Ò»¸öÄ¬ÈÏµÄ±ıÍ¼
-        dpd.setValue("¹ÜÀíÈËÔ±", 25);  //ÊäÈëÊı¾İ
-        dpd.setValue("ÊĞ³¡ÈËÔ±", 25);
-        dpd.setValue("¿ª·¢ÈËÔ±", 45);
-        dpd.setValue("ÆäËûÈËÔ±", 10);
+            
+//      // step1:åˆ›å»ºæ•°æ®é›†å¯¹è±¡
+//              CategoryDataset dataset = createDataSet2();
+//          
+//              // step2:åˆ›å»ºé¥¼å›¾
+//              JFreeChart chart = createChart(dataset);
+//          
+//              // step3: è¾“å‡ºå›¾è¡¨åˆ°Swingçª—å£
+//              //drawToFrame(chart);
+//          
+//              // step3: è¾“å‡ºå›¾è¡¨åˆ°ç£ç›˜
+//              drawToOutputStream("D://testcharts//mybook-bar.png", chart);
+                        
+        DefaultPieDataset dpd=new DefaultPieDataset(); //å»ºç«‹ä¸€ä¸ªé»˜è®¤çš„é¥¼å›¾
+        dpd.setValue("ç®¡ç†äººå‘˜", 25);  //è¾“å…¥æ•°æ®
+        dpd.setValue("å¸‚åœºäººå‘˜", 25);
+        dpd.setValue("å¼€å‘äººå‘˜", 45);
+        dpd.setValue("å…¶ä»–äººå‘˜", 10);
         
-        JFreeChart chart=ChartFactory.createPieChart3D("Ä³¹«Ë¾ÈËÔ±×éÖ¯Êı¾İÍ¼",dpd,true,true,false); 
-        //¿ÉÒÔ²é¾ßÌåµÄAPIÎÄµµ,µÚÒ»¸ö²ÎÊıÊÇ±êÌâ£¬µÚ¶ş¸ö²ÎÊıÊÇÒ»¸öÊı¾İ¼¯£¬µÚÈı¸ö²ÎÊı±íÊ¾ÊÇ·ñÏÔÊ¾Legend£¬µÚËÄ¸ö²ÎÊı±íÊ¾ÊÇ·ñÏÔÊ¾ÌáÊ¾£¬µÚÎå¸ö²ÎÊı±íÊ¾Í¼ÖĞÊÇ·ñ´æÔÚURL
+        JFreeChart chart=ChartFactory.createPieChart3D("æŸå…¬å¸äººå‘˜ç»„ç»‡æ•°æ®å›¾",dpd,true,true,false); 
+        //å¯ä»¥æŸ¥å…·ä½“çš„APIæ–‡æ¡£,ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯æ ‡é¢˜ï¼Œç¬¬äºŒä¸ªå‚æ•°æ˜¯ä¸€ä¸ªæ•°æ®é›†ï¼Œç¬¬ä¸‰ä¸ªå‚æ•°è¡¨ç¤ºæ˜¯å¦æ˜¾ç¤ºLegendï¼Œç¬¬å››ä¸ªå‚æ•°è¡¨ç¤ºæ˜¯å¦æ˜¾ç¤ºæç¤ºï¼Œç¬¬äº”ä¸ªå‚æ•°è¡¨ç¤ºå›¾ä¸­æ˜¯å¦å­˜åœ¨URL
         
-		chart.getLegend().setItemFont(new Font("ËÎÌå", Font.PLAIN, 12));
-		
-		chart.getTitle().setFont(new Font("ËÎÌå", Font.BOLD,12));
-	
-		 PiePlot plot = (PiePlot) chart.getPlot();  
-		
-		 plot.setLabelFont(new Font("Á¥Êé", Font.PLAIN, 12));  
-		 
-        ChartFrame chartFrame=new ChartFrame("Ä³¹«Ë¾ÈËÔ±×éÖ¯Êı¾İÍ¼",chart); 
-        //chartÒª·ÅÔÚJavaÈİÆ÷×é¼şÖĞ£¬ChartFrame¼Ì³Ğ×ÔjavaµÄJframeÀà¡£¸ÃµÚÒ»¸ö²ÎÊıµÄÊı¾İÊÇ·ÅÔÚ´°¿Ú×óÉÏ½ÇµÄ£¬²»ÊÇÕıÖĞ¼äµÄ±êÌâ¡£
-        chartFrame.pack(); //ÒÔºÏÊÊµÄ´óĞ¡Õ¹ÏÖÍ¼ĞÎ
-        chartFrame.setVisible(true);//Í¼ĞÎÊÇ·ñ¿É¼û
+        chart.getLegend().setItemFont(new Font("å®‹ä½“", Font.PLAIN, 12));
+        
+        chart.getTitle().setFont(new Font("å®‹ä½“", Font.BOLD,12));
+    
+         PiePlot plot = (PiePlot) chart.getPlot();  
+        
+         plot.setLabelFont(new Font("éš¶ä¹¦", Font.PLAIN, 12));  
+         
+        ChartFrame chartFrame=new ChartFrame("æŸå…¬å¸äººå‘˜ç»„ç»‡æ•°æ®å›¾",chart); 
+        //chartè¦æ”¾åœ¨Javaå®¹å™¨ç»„ä»¶ä¸­ï¼ŒChartFrameç»§æ‰¿è‡ªjavaçš„Jframeç±»ã€‚è¯¥ç¬¬ä¸€ä¸ªå‚æ•°çš„æ•°æ®æ˜¯æ”¾åœ¨çª—å£å·¦ä¸Šè§’çš„ï¼Œä¸æ˜¯æ­£ä¸­é—´çš„æ ‡é¢˜ã€‚
+        chartFrame.pack(); //ä»¥åˆé€‚çš„å¤§å°å±•ç°å›¾å½¢
+        chartFrame.setVisible(true);//å›¾å½¢æ˜¯å¦å¯è§
         
     }
     
     public static void main(String args[]){
-    	
-    	DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset.setValue(5000, "±±¾©","Corejava");
-		dataset.setValue(3000, "ÉÏº£","Corejava");
-		dataset.setValue(2000, "¹ãÖİ","Corejava");
-		
-		dataset.setValue(10000, "±±¾©","JavaWeb");
-		dataset.setValue(6000, "ÉÏº£","JavaWeb");
-		dataset.setValue(4000, "¹ãÖİ","JavaWeb");
-		
-		dataset.setValue(15000, "±±¾©","Ò×ÓÃstruts");
-		dataset.setValue(5000, "ÉÏº£","Ò×ÓÃstruts");
-		dataset.setValue(10000, "¹ãÖİ","Ò×ÓÃstruts");
-		
-		dataset.setValue(20000, "±±¾©","¾«Í¨JSF");
-		dataset.setValue(10000, "ÉÏº£","¾«Í¨JSF");
-		dataset.setValue(10000, "¹ãÖİ","¾«Í¨JSF");
-		
-		JFreeChart chart = ChartFactory.createLineChart(
-				"1Ô­´´Í¼ÊéÏúÁ¿Í³¼Æ", //Í¼±íµÄ±êÌâ
-				"1Í¼ÊéÃû",  //Ä¿Â¼ÖáµÄÏÔÊ¾±êÇ© 
-				"1ÏúÁ¿",   //ÊıÖµÖáµÄÏÔÊ¾±êÇ©
-				dataset, //Êı¾İ¼¯
-				PlotOrientation.VERTICAL,  //Í¼±í·½Ê½£ºV´¹Ö±;HË®Æ½ 
-				true, // ÊÇ·ñÏÔÊ¾Í¼Àı
-				false, // ÊÇ·ñÏÔÊ¾¹¤¾ßÌáÊ¾
-				false // ÊÇ·ñÉú³ÉURL
-				);
-		ChartFrame frame = new ChartFrame("Ô­´´Í¼ÊéÏúÁ¿Í³¼Æ", chart);
-		frame.pack();
-		frame.setVisible(true);
+        
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.setValue(5000, "åŒ—äº¬","Corejava");
+        dataset.setValue(3000, "ä¸Šæµ·","Corejava");
+        dataset.setValue(2000, "å¹¿å·","Corejava");
+        
+        dataset.setValue(10000, "åŒ—äº¬","JavaWeb");
+        dataset.setValue(6000, "ä¸Šæµ·","JavaWeb");
+        dataset.setValue(4000, "å¹¿å·","JavaWeb");
+        
+        dataset.setValue(15000, "åŒ—äº¬","æ˜“ç”¨struts");
+        dataset.setValue(5000, "ä¸Šæµ·","æ˜“ç”¨struts");
+        dataset.setValue(10000, "å¹¿å·","æ˜“ç”¨struts");
+        
+        dataset.setValue(20000, "åŒ—äº¬","ç²¾é€šJSF");
+        dataset.setValue(10000, "ä¸Šæµ·","ç²¾é€šJSF");
+        dataset.setValue(10000, "å¹¿å·","ç²¾é€šJSF");
+        
+        JFreeChart chart = ChartFactory.createLineChart(
+                "1åŸåˆ›å›¾ä¹¦é”€é‡ç»Ÿè®¡", //å›¾è¡¨çš„æ ‡é¢˜
+                "1å›¾ä¹¦å",  //ç›®å½•è½´çš„æ˜¾ç¤ºæ ‡ç­¾ 
+                "1é”€é‡",   //æ•°å€¼è½´çš„æ˜¾ç¤ºæ ‡ç­¾
+                dataset, //æ•°æ®é›†
+                PlotOrientation.VERTICAL,  //å›¾è¡¨æ–¹å¼ï¼šVå‚ç›´;Hæ°´å¹³ 
+                true, // æ˜¯å¦æ˜¾ç¤ºå›¾ä¾‹
+                false, // æ˜¯å¦æ˜¾ç¤ºå·¥å…·æç¤º
+                false // æ˜¯å¦ç”ŸæˆURL
+                );
+        ChartFrame frame = new ChartFrame("åŸåˆ›å›¾ä¹¦é”€é‡ç»Ÿè®¡", chart);
+        frame.pack();
+        frame.setVisible(true);
     }
 }

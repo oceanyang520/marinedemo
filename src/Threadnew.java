@@ -2,15 +2,15 @@
 import java.util.Vector;
 import java.util.Date;
 /**
- * Ïß³Ì²âÊÔÊµÀı
- * @author ¾²Ö¹µÄÁ÷Ë®
+ * çº¿ç¨‹æµ‹è¯•å®ä¾‹
+ * @author é™æ­¢çš„æµæ°´
  *
  */
 public class Threadnew
 {
  /**
   * 
-  * @author ¾²Ö¹µÄÁ÷Ë®
+  * @author é™æ­¢çš„æµæ°´
   *
   */
 class ThreadA extends Thread
@@ -26,7 +26,7 @@ class ThreadA extends Thread
  }
 /**
  * 
- * @author ¾²Ö¹µÄÁ÷Ë®
+ * @author é™æ­¢çš„æµæ°´
  *
  */
 class ThreadB implements Runnable

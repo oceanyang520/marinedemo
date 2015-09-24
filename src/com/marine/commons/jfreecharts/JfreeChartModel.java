@@ -5,50 +5,50 @@ import java.util.List;
 
 public class JfreeChartModel  {
 
-		public List<HashMap<Object, Object>> list;
-		public String title;
-		public String XLableName;
-		public String YLableName;
-		public String destPath; //D://testcharts//mybook-bar.png
-		
-		/**
-		 * ÉèÖÃÊı¾İ¼¯
-		 * @param list
-		 */
-		public void setList(List<HashMap<Object, Object>> list) {
-			this.list = list;
-		}
+        public List<HashMap<Object, Object>> list;
+        public String title;
+        public String XLableName;
+        public String YLableName;
+        public String destPath; //D://testcharts//mybook-bar.png
+        
+        /**
+         * è®¾ç½®æ•°æ®é›†
+         * @param list
+         */
+        public void setList(List<HashMap<Object, Object>> list) {
+            this.list = list;
+        }
 
-		/**
-		 * ÉèÖÃÍ¼±íµÄ±êÌâ
-		 * @param title
-		 */
-		public void setTitle(String title) {
-			this.title = title;
-		}
+        /**
+         * è®¾ç½®å›¾è¡¨çš„æ ‡é¢˜
+         * @param title
+         */
+        public void setTitle(String title) {
+            this.title = title;
+        }
 
-		/**
-		 * ÉèÖÃXÖáÃû³Æ
-		 * @param xLableName
-		 */
-		public void setXLableName(String xLableName) {
-			XLableName = xLableName;
-		}
+        /**
+         * è®¾ç½®Xè½´åç§°
+         * @param xLableName
+         */
+        public void setXLableName(String xLableName) {
+            XLableName = xLableName;
+        }
 
-		/**
-		 * ÉèÖÃYÖáÃû³Æ
-		 * @param yLableName
-		 */
-		public void setYLableName(String yLableName) {
-			YLableName = yLableName;
-		}
+        /**
+         * è®¾ç½®Yè½´åç§°
+         * @param yLableName
+         */
+        public void setYLableName(String yLableName) {
+            YLableName = yLableName;
+        }
 
-		/**
-		 * ÉèÖÃÍ¼Æ¬±£´æÄ¿µÄÂ·¾¶
-		 * @param destPath
-		 */
-		public void setDestPath(String destPath) {
-			this.destPath = destPath;
-		}
-	
+        /**
+         * è®¾ç½®å›¾ç‰‡ä¿å­˜ç›®çš„è·¯å¾„
+         * @param destPath
+         */
+        public void setDestPath(String destPath) {
+            this.destPath = destPath;
+        }
+    
 }

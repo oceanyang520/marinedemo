@@ -35,417 +35,414 @@ import org.junit.Test;
 
 public class JfreeChartsUtil extends JfreeChartModel {
 
-	/**
-	 * Éú³ÉÖù×´Í¼±í
-	 * @param hashMap
-	 * @return JFreeChart
-	 */
-	public JFreeChart createBarChart(){
-		
-		//--------- :×éÖ¯Êı¾İ¼¯¿ªÊ¼---------------
-		//		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		//		dataset.setValue(5000, "±±¾©","Corejava");
-		//		dataset.setValue(3000, "ÉÏº£","Corejava");
-		//		dataset.setValue(2000, "¹ãÖİ","Corejava");
-		//		
-		//		dataset.setValue(10000, "±±¾©","JavaWeb");
-		//		dataset.setValue(6000, "ÉÏº£","JavaWeb");
-		//		dataset.setValue(4000, "¹ãÖİ","JavaWeb");
-		//		
-		//		dataset.setValue(15000, "±±¾©","Ò×ÓÃstruts");
-		//		dataset.setValue(5000, "ÉÏº£","Ò×ÓÃstruts");
-		//		dataset.setValue(10000, "¹ãÖİ","Ò×ÓÃstruts");
-		//		
-		//		dataset.setValue(20000, "±±¾©","¾«Í¨JSF");
-		//		dataset.setValue(10000, "ÉÏº£","¾«Í¨JSF");
-		//		dataset.setValue(10000, "¹ãÖİ","¾«Í¨JSF");
-		//List<HashMap<Object, Object>> list = (List<HashMap<Object, Object>>)hashMap.get("chartList");
-		//´«Èëlist½øĞĞ±éÀú
-    	DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    	//Êı¾İ¸ñÊ½
-    	//dataset.setValue(5000, "±±¾©","Corejava");
-    	//dataset.setValue(value, rowKey, columnKey);
-    	//ÒÔrowKeyÎª±ê×¼
-    	for (int i = 0; i < this.list.size(); i++) {
-    		
-			dataset.setValue(Integer.valueOf(list.get(i).get("value").toString()), list.get(i).get("rowKey").toString(), list.get(i).get("columnKey").toString());
-		}
+    /**
+     * ç”ŸæˆæŸ±çŠ¶å›¾è¡¨
+     * @param hashMap
+     * @return JFreeChart
+     */
+    public JFreeChart createBarChart(){
+        
+        //--------- :ç»„ç»‡æ•°æ®é›†å¼€å§‹---------------
+        //      DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        //      dataset.setValue(5000, "åŒ—äº¬","Corejava");
+        //      dataset.setValue(3000, "ä¸Šæµ·","Corejava");
+        //      dataset.setValue(2000, "å¹¿å·","Corejava");
+        //      
+        //      dataset.setValue(10000, "åŒ—äº¬","JavaWeb");
+        //      dataset.setValue(6000, "ä¸Šæµ·","JavaWeb");
+        //      dataset.setValue(4000, "å¹¿å·","JavaWeb");
+        //      
+        //      dataset.setValue(15000, "åŒ—äº¬","æ˜“ç”¨struts");
+        //      dataset.setValue(5000, "ä¸Šæµ·","æ˜“ç”¨struts");
+        //      dataset.setValue(10000, "å¹¿å·","æ˜“ç”¨struts");
+        //      
+        //      dataset.setValue(20000, "åŒ—äº¬","ç²¾é€šJSF");
+        //      dataset.setValue(10000, "ä¸Šæµ·","ç²¾é€šJSF");
+        //      dataset.setValue(10000, "å¹¿å·","ç²¾é€šJSF");
+        //List<HashMap<Object, Object>> list = (List<HashMap<Object, Object>>)hashMap.get("chartList");
+        //ä¼ å…¥listè¿›è¡Œéå†
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        //æ•°æ®æ ¼å¼
+        //dataset.setValue(5000, "åŒ—äº¬","Corejava");
+        //dataset.setValue(value, rowKey, columnKey);
+        //ä»¥rowKeyä¸ºæ ‡å‡†
+        for (int i = 0; i < this.list.size(); i++) {
+            
+            dataset.setValue(Integer.valueOf(list.get(i).get("value").toString()), list.get(i).get("rowKey").toString(), list.get(i).get("columnKey").toString());
+        }
 
-    	JFreeChart 	chart = ChartFactory.createBarChart(	//Öù×´Í¼
-					this.title, //Í¼±íµÄ±êÌâ
-					this.XLableName,  //Ä¿Â¼ÖáµÄÏÔÊ¾±êÇ© 
-					this.YLableName,   //ÊıÖµÖáµÄÏÔÊ¾±êÇ©
-					dataset, //Êı¾İ¼¯
-					PlotOrientation.VERTICAL,  //Í¼±í·½Ê½£ºV´¹Ö±;HË®Æ½ 
-					true, // ÊÇ·ñÏÔÊ¾Í¼Àı
-					false, // ÊÇ·ñÏÔÊ¾¹¤¾ßÌáÊ¾
-					false // ÊÇ·ñÉú³ÉURL
-    	);
-    	
-		//===============ÎªÁË·ÀÖ¹ÖĞÎÄÂÒÂë£º±ØĞëÉèÖÃ×ÖÌå
-		chart.setTitle(new TextTitle(title, new Font("ºÚÌå", Font.ITALIC, 22)));
-	
-		LegendTitle legend = chart.getLegend(); // »ñÈ¡Í¼Àı
-		legend.setItemFont(new Font("ËÎÌå", Font.BOLD, 12)); //ÉèÖÃÍ¼ÀıµÄ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-	
-		CategoryPlot plot = (CategoryPlot) chart.getPlot(); // »ñÈ¡ÖùÍ¼µÄPlot¶ÔÏó(Êµ¼ÊÍ¼±í)
-		// ÉèÖÃÖùÍ¼±³¾°É«£¨×¢Òâ£¬ÏµÍ³È¡É«µÄÊ±ºòÒªÊ¹ÓÃ16Î»µÄÄ£Ê½À´²é¿´ÑÕÉ«±àÂë£¬ÕâÑù±È½Ï×¼È·£©
-		plot.setBackgroundPaint(new Color(255, 255, 204));
-		plot.setForegroundAlpha(0.65F); //ÉèÖÃÇ°¾°É«Í¸Ã÷¶È
-		
-		// ÉèÖÃºáĞéÏß¿É¼û
-		plot.setRangeGridlinesVisible(true);
-		// ĞéÏßÉ«²Ê
-		plot.setRangeGridlinePaint(Color.gray);
-		
-		CategoryAxis h = plot.getDomainAxis(); //»ñÈ¡xÖá
-		h.setMaximumCategoryLabelWidthRatio(1.0f);// ºáÖáÉÏµÄ Lable ÊÇ·ñÍêÕûÏÔÊ¾
-		h.setLabelFont(new Font("ËÎÌå", Font.BOLD, 12));//ÉèÖÃ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-		h.setTickLabelFont(new Font("ËÎÌå", Font.BOLD, 12));// ÖáÊıÖµ 
-		//h.setCategoryLabelPositions(CategoryLabelPositions.UP_45);//45¶ÈÇãĞ±
-		
-		plot.getRangeAxis().setLabelFont(new Font("ËÎÌå", Font.BOLD, 12)); //YÖáÉèÖÃ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-		
-		//ÖùÍ¼µÄ³ÊÏÖÆ÷
-		BarRenderer renderer = new BarRenderer(); 
-		// ÉèÖÃÖù×Ó¿í¶È 
-		renderer.setMaximumBarWidth(0.05); 
-		// ÉèÖÃÖù×Ó¸ß¶È 
-		//renderer.setMinimumBarLength(0.2); 
-		// ÉèÖÃÖù×Ó±ß¿òÑÕÉ« 
-		renderer.setBaseOutlinePaint(Color.BLACK); 
-		// ÉèÖÃÖù×Ó±ß¿ò¿É¼û 
-		renderer.setDrawBarOutline(true); 
-		//ÉèÖÃÃ¿¸öÖùµÄÑÕÉ« 
-		renderer.setSeriesPaint(0, Color.BLUE); 
-		renderer.setSeriesPaint(1, Color.GREEN); 
-		renderer.setSeriesPaint(2, Color.RED); 
-		//ÉèÖÃÃ¿¸öµØÇøËù°üº¬µÄÆ½ĞĞÖùµÄÖ®¼ä¾àÀë 
-		renderer.setItemMargin(0.05); 
-		// ÏÔÊ¾Ã¿¸öÖùµÄÊıÖµ£¬²¢ĞŞ¸Ä¸ÃÊıÖµµÄ×ÖÌåÊôĞÔ 
-		renderer.setIncludeBaseInRange(true); 
-		renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator()); 
-		renderer.setBaseItemLabelsVisible(true); 
-		// ÉèÖÃÖùµÄÍ¸Ã÷¶È 
-		plot.setForegroundAlpha(1.0f); 
-		//¸øÖùÍ¼Ìí¼Ó³ÊÏÖÆ÷
-		plot.setRenderer(renderer); 
-			
-		// Ã»ÓĞÊı¾İµÄÊ±ºòÏÔÊ¾µÄÄÚÈİ
-		plot.setNoDataMessage("ÕÒ²»µ½¿ÉÓÃÊı¾İ...");
-		
-		return chart;
-	}
-	
-	/**
-	 * Éú³ÉÕÛÏßÍ¼±í
-	 * @param hashMap
-	 * @return JFreeChart
-	 */
-	public  JFreeChart createLineChart(){
+        JFreeChart  chart = ChartFactory.createBarChart(    //æŸ±çŠ¶å›¾
+                    this.title, //å›¾è¡¨çš„æ ‡é¢˜
+                    this.XLableName,  //ç›®å½•è½´çš„æ˜¾ç¤ºæ ‡ç­¾ 
+                    this.YLableName,   //æ•°å€¼è½´çš„æ˜¾ç¤ºæ ‡ç­¾
+                    dataset, //æ•°æ®é›†
+                    PlotOrientation.VERTICAL,  //å›¾è¡¨æ–¹å¼ï¼šVå‚ç›´;Hæ°´å¹³ 
+                    true, // æ˜¯å¦æ˜¾ç¤ºå›¾ä¾‹
+                    false, // æ˜¯å¦æ˜¾ç¤ºå·¥å…·æç¤º
+                    false // æ˜¯å¦ç”ŸæˆURL
+        );
+        
+        //===============ä¸ºäº†é˜²æ­¢ä¸­æ–‡ä¹±ç ï¼šå¿…é¡»è®¾ç½®å­—ä½“
+        chart.setTitle(new TextTitle(title, new Font("é»‘ä½“", Font.ITALIC, 22)));
+    
+        LegendTitle legend = chart.getLegend(); // è·å–å›¾ä¾‹
+        legend.setItemFont(new Font("å®‹ä½“", Font.BOLD, 12)); //è®¾ç½®å›¾ä¾‹çš„å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+    
+        CategoryPlot plot = (CategoryPlot) chart.getPlot(); // è·å–æŸ±å›¾çš„Plotå¯¹è±¡(å®é™…å›¾è¡¨)
+        // è®¾ç½®æŸ±å›¾èƒŒæ™¯è‰²ï¼ˆæ³¨æ„ï¼Œç³»ç»Ÿå–è‰²çš„æ—¶å€™è¦ä½¿ç”¨16ä½çš„æ¨¡å¼æ¥æŸ¥çœ‹é¢œè‰²ç¼–ç ï¼Œè¿™æ ·æ¯”è¾ƒå‡†ç¡®ï¼‰
+        plot.setBackgroundPaint(new Color(255, 255, 204));
+        plot.setForegroundAlpha(0.65F); //è®¾ç½®å‰æ™¯è‰²é€æ˜åº¦
+        
+        // è®¾ç½®æ¨ªè™šçº¿å¯è§
+        plot.setRangeGridlinesVisible(true);
+        // è™šçº¿è‰²å½©
+        plot.setRangeGridlinePaint(Color.gray);
+        
+        CategoryAxis h = plot.getDomainAxis(); //è·å–xè½´
+        h.setMaximumCategoryLabelWidthRatio(1.0f);// æ¨ªè½´ä¸Šçš„ Lable æ˜¯å¦å®Œæ•´æ˜¾ç¤º
+        h.setLabelFont(new Font("å®‹ä½“", Font.BOLD, 12));//è®¾ç½®å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+        h.setTickLabelFont(new Font("å®‹ä½“", Font.BOLD, 12));// è½´æ•°å€¼ 
+        //h.setCategoryLabelPositions(CategoryLabelPositions.UP_45);//45åº¦å€¾æ–œ
+        
+        plot.getRangeAxis().setLabelFont(new Font("å®‹ä½“", Font.BOLD, 12)); //Yè½´è®¾ç½®å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+        
+        //æŸ±å›¾çš„å‘ˆç°å™¨
+        BarRenderer renderer = new BarRenderer(); 
+        // è®¾ç½®æŸ±å­å®½åº¦ 
+        renderer.setMaximumBarWidth(0.05); 
+        // è®¾ç½®æŸ±å­é«˜åº¦ 
+        //renderer.setMinimumBarLength(0.2); 
+        // è®¾ç½®æŸ±å­è¾¹æ¡†é¢œè‰² 
+        renderer.setBaseOutlinePaint(Color.BLACK); 
+        // è®¾ç½®æŸ±å­è¾¹æ¡†å¯è§ 
+        renderer.setDrawBarOutline(true); 
+        //è®¾ç½®æ¯ä¸ªæŸ±çš„é¢œè‰² 
+        renderer.setSeriesPaint(0, Color.BLUE); 
+        renderer.setSeriesPaint(1, Color.GREEN); 
+        renderer.setSeriesPaint(2, Color.RED); 
+        //è®¾ç½®æ¯ä¸ªåœ°åŒºæ‰€åŒ…å«çš„å¹³è¡ŒæŸ±çš„ä¹‹é—´è·ç¦» 
+        renderer.setItemMargin(0.05); 
+        // æ˜¾ç¤ºæ¯ä¸ªæŸ±çš„æ•°å€¼ï¼Œå¹¶ä¿®æ”¹è¯¥æ•°å€¼çš„å­—ä½“å±æ€§ 
+        renderer.setIncludeBaseInRange(true); 
+        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator()); 
+        renderer.setBaseItemLabelsVisible(true); 
+        // è®¾ç½®æŸ±çš„é€æ˜åº¦ 
+        plot.setForegroundAlpha(1.0f); 
+        //ç»™æŸ±å›¾æ·»åŠ å‘ˆç°å™¨
+        plot.setRenderer(renderer); 
+            
+        // æ²¡æœ‰æ•°æ®çš„æ—¶å€™æ˜¾ç¤ºçš„å†…å®¹
+        plot.setNoDataMessage("æ‰¾ä¸åˆ°å¯ç”¨æ•°æ®...");
+        
+        return chart;
+    }
+    
+    /**
+     * ç”ŸæˆæŠ˜çº¿å›¾è¡¨
+     * @param hashMap
+     * @return JFreeChart
+     */
+    public  JFreeChart createLineChart(){
  
-    	DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    	System.out.println(list);
-    	for (int i = 0; i < this.list.size(); i++) {
-    		
-			dataset.setValue(Integer.valueOf(list.get(i).get("value").toString()), list.get(i).get("rowKey").toString(), list.get(i).get("columnKey").toString());
-		}
-		    	  
-		JFreeChart chart  = ChartFactory.createLineChart(
-				title, //Í¼±íµÄ±êÌâ
-				XLableName,  //Ä¿Â¼ÖáµÄÏÔÊ¾±êÇ© 
-				YLableName,   //ÊıÖµÖáµÄÏÔÊ¾±êÇ©
-				dataset, //Êı¾İ¼¯
-				PlotOrientation.VERTICAL,  //Í¼±í·½Ê½£ºV´¹Ö±;HË®Æ½ 
-				true, // ÊÇ·ñÏÔÊ¾Í¼Àı
-				false, // ÊÇ·ñÏÔÊ¾¹¤¾ßÌáÊ¾
-				false // ÊÇ·ñÉú³ÉURL
-			);
-    	//===============ÎªÁË·ÀÖ¹ÖĞÎÄÂÒÂë£º±ØĞëÉèÖÃ×ÖÌå
-		chart.setTitle(new TextTitle(title, new Font("ºÚÌå", Font.ITALIC, 22)));
-	
-		LegendTitle legend = chart.getLegend(); // »ñÈ¡Í¼Àı
-		legend.setItemFont(new Font("ËÎÌå", Font.BOLD, 12)); //ÉèÖÃÍ¼ÀıµÄ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-	
-		CategoryPlot plot = (CategoryPlot) chart.getPlot(); // »ñÈ¡ÕÛÏßÍ¼µÄPlot¶ÔÏó(Êµ¼ÊÍ¼±í)
-		// ÉèÖÃÕÛÏßÍ¼±³¾°É«£¨×¢Òâ£¬ÏµÍ³È¡É«µÄÊ±ºòÒªÊ¹ÓÃ16Î»µÄÄ£Ê½À´²é¿´ÑÕÉ«±àÂë£¬ÕâÑù±È½Ï×¼È·£©
-		plot.setBackgroundPaint(new Color(255, 255, 204));
-		plot.setForegroundAlpha(0.65F); //ÉèÖÃÇ°¾°É«Í¸Ã÷¶È
-		
-		// ÉèÖÃºáĞéÏß¿É¼û
-		plot.setRangeGridlinesVisible(true);
-		// ĞéÏßÉ«²Ê
-		plot.setRangeGridlinePaint(Color.gray);
-		
-		CategoryAxis h = plot.getDomainAxis(); //»ñÈ¡xÖá
-		h.setMaximumCategoryLabelWidthRatio(1.0f);// ºáÖáÉÏµÄ Lable ÊÇ·ñÍêÕûÏÔÊ¾
-		h.setLabelFont(new Font("ËÎÌå", Font.BOLD, 12));//ÉèÖÃ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-		h.setTickLabelFont(new Font("ËÎÌå", Font.BOLD, 12));// ÖáÊıÖµ 
-		//h.setCategoryLabelPositions(CategoryLabelPositions.UP_45);//45¶ÈÇãĞ±
-		
-		plot.getRangeAxis().setLabelFont(new Font("ËÎÌå", Font.BOLD, 12)); //YÖáÉèÖÃ×ÖÌå£¬·ÀÖ¹ÖĞÎÄÂÒÂë
-			
-		// Ã»ÓĞÊı¾İµÄÊ±ºòÏÔÊ¾µÄÄÚÈİ
-		plot.setNoDataMessage("ÕÒ²»µ½¿ÉÓÃÊı¾İ...");
-		
-		return chart;
-	}
-		
-	/**
-	 * ´´½¨±ıÍ¼
-	 * @param dataset
-	 * @return
-	 */
-	public  JFreeChart createPieChart(){
-		
-		DefaultPieDataset dataset = new DefaultPieDataset();
-    	//Êı¾İ¸ñÊ½
-    	//dataset.setValue("java³ÌĞòÉè¼ÆÓïÑÔ", 10000);
-    	//dataset.setValue(key, value)
-    	//ÒÔrowKeyÎª±ê×¼
-		System.out.println(list);
-    	for (int i = 0; i < list.size(); i++) {
-    		
-  			dataset.setValue(list.get(i).get("pieKey").toString(), Integer.valueOf(list.get(i).get("pieValue").toString()));
-		}
-    	  
-    	JFreeChart 	chart = ChartFactory.createPieChart(
-    			title, // Í¼±í±êÌâ
-				dataset, // Êı¾İ¼¯
-				true, // ÊÇ·ñÏÔÊ¾Í¼Àı
-				true, // ÊÇ·ñÏÔÊ¾¹¤¾ßÌáÊ¾
-				true // ÊÇ·ñÉú³ÉURL
-				);
-			
-		//ÉèÖÃ±êÌâ×ÖÌå==ÎªÁË·ÀÖ¹ÖĞÎÄÂÒÂë£º±ØĞëÉèÖÃ×ÖÌå
-		chart.setTitle(new TextTitle(title, new Font("ºÚÌå", Font.ITALIC, 22)));
-		//ÉèÖÃÍ¼ÀıµÄ×ÖÌå==ÎªÁË·ÀÖ¹ÖĞÎÄÂÒÂë£º±ØĞëÉèÖÃ×ÖÌå
-		chart.getLegend().setItemFont(new Font("ºÚÌå", Font.BOLD, 12)); 
-		// »ñÈ¡±ıÍ¼µÄPlot¶ÔÏó(Êµ¼ÊÍ¼±í)
-		PiePlot plot = (PiePlot) chart.getPlot(); 
-		//Í¼ĞÎ±ß¿òÑÕÉ«   
-		plot.setBaseSectionOutlinePaint(Color.GRAY);   
-		//Í¼ĞÎ±ß¿ò´ÖÏ¸   
-		plot.setBaseSectionOutlineStroke(new BasicStroke(0.0f)); 
-		//ÉèÖÃ±ı×´Í¼µÄ»æÖÆ·½Ïò£¬¿ÉÒÔ°´Ë³Ê±Õë·½Ïò»æÖÆ£¬Ò²¿ÉÒÔ°´ÄæÊ±Õë·½Ïò»æÖÆ   
-		plot.setDirection(Rotation.ANTICLOCKWISE);   
-		//ÉèÖÃ»æÖÆ½Ç¶È(Í¼ĞÎĞı×ª½Ç¶È)   
-		plot.setStartAngle(70);   
-		//ÉèÖÃÍ»³öÏÔÊ¾µÄÊı¾İ¿é   
-		plot.setExplodePercent("One", 0.1D);  
-		//ÉèÖÃ±³¾°É«Í¸Ã÷¶È
-		plot.setBackgroundAlpha(0.7F); 
-		// ÉèÖÃÇ°¾°É«Í¸Ã÷¶È
-		plot.setForegroundAlpha(0.65F); 
-		//ÉèÖÃÇø¿é±êÇ©µÄ×ÖÌå==ÎªÁË·ÀÖ¹ÖĞÎÄÂÒÂë£º±ØĞëÉèÖÃ×ÖÌå
-		plot.setLabelFont(new Font("Á¥Êé", Font.PLAIN, 12)); 
-		// ÉÈÇø·ÖÀëÏÔÊ¾,¶Ô3DÍ¼²»ÆğĞ§
-		//plot.setExplodePercent(dataset.getKey(3), 0.1D);
-		// Í¼ÀıÏÔÊ¾°Ù·Ö±È:×Ô¶¨Òå·½Ê½£¬{0} ±íÊ¾Ñ¡Ïî£¬ {1} ±íÊ¾ÊıÖµ£¬ {2} ±íÊ¾ËùÕ¼±ÈÀı ,Ğ¡ÊıµãºóÁ½Î»
-		plot.setLabelGenerator(new StandardPieSectionLabelGenerator(
-				"{0}:{1}/r/n({2})", NumberFormat.getNumberInstance(),
-				new DecimalFormat("0.00%")));
-		// Í¼ÀıÏÔÊ¾°Ù·Ö±È
-		// plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator("{0}={1}({2})"));
-		// Ö¸¶¨ÏÔÊ¾µÄ±ıÍ¼Îª£ºÔ²ĞÎ(true) »¹ÊÇÍÖÔ²ĞÎ(false)
-		plot.setCircular(false);
-		// Ã»ÓĞÊı¾İµÄÊ±ºòÏÔÊ¾µÄÄÚÈİ
-		plot.setNoDataMessage("ÕÒ²»µ½¿ÉÓÃÊı¾İ...");    
-		
-		//ÉèÖÃÊó±êĞüÍ£ÌáÊ¾
-		plot.setToolTipGenerator(new StandardPieToolTipGenerator());
-		//ÉèÖÃÈÈµãÁ´½Ó
-		plot.setURLGenerator(new StandardPieURLGenerator("detail.jsp"));
-		
-		return chart;
-	}
-	
-	/**
-	 *  Êä³öÍ¼±íµ½Swing Frame
-	 * @param chart
-	 */
-	public  void drawToFrame(JFreeChart chart){
-		//Êä³öÍ¼±íµ½Swing Frame
-		ChartFrame frame = new ChartFrame("Ô­´´Í¼ÊéÏúÁ¿Í³¼Æ", chart);
-		frame.pack();
-		frame.setVisible(true);
-	}
-	
-	/**
-	 *  Êä³öÍ¼±íµ½Ö¸¶¨µÄ´ÅÅÌ
-	 * @param destPath
-	 * @param chart
-	 */
-	public  void drawToOutputStream(String destPath, JFreeChart chart) {
-		FileOutputStream fos = null;
-		try {
-			fos = new FileOutputStream(destPath);
-			// ChartUtilities.writeChartAsJPEG(
-			ChartUtilities.writeChartAsPNG(fos, // Ö¸¶¨Ä¿±êÊä³öÁ÷
-					chart, // Í¼±í¶ÔÏó
-					600, // ¿í
-					500, // ¸ß
-					null); // ChartRenderingInfoĞÅÏ¢
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				fos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	/**
-	 * ´´½¨Öù×´Í¼Í¼±íÍ¼Æ¬	
-	 * @param hashMapÖĞÓĞ£º
-	 * @param chartList
-	 * @param String title 
-	 * @param String XLableName
-	 * @param String YLableName
-	 * @param String isPieChart3D
-	 * @param String destPath
-	 */
-	 public  void createBarPic ()
-	    {
-		JFreeChart chart = createBarChart();
-		
-		//drawToOutputStream("D://testcharts//mybook-bar.png", chart);
-		//drawToOutputStream(hashMap.get("destPath").toString(), chart);
-		drawToFrame(chart);
-	    }	 	
-	 
-	 
-	 /**
-	 * ´´½¨±ıÍ¼Í¼±íÍ¼Æ¬	
-	 * @param hashMapÖĞÓĞ£º
-	 * @param chartList
-	 * @param String title 
-	 * @param String isBarChart
-	 * @param String destPath
-	 */
-	 public  void createPiePic ()
-	    {
-		 //´´½¨Öù×´Í¼
-		JFreeChart chart = createPieChart();
-		drawToFrame(chart);
-		//drawToOutputStream("D://testcharts//mybook-bar.png", chart);
-		//drawToOutputStream(hashMap.get("destPath").toString(), chart);
-	    			
-	    }
-	 
-	 /**
-	 * ´´½¨ÕÛÏßÍ¼Í¼±íÍ¼Æ¬	
-	 * @param hashMapÖĞÓĞ£º
-	 * @param chartList
-	 * @param String title 
-	 * @param String isBarChart
-	 * @param String destPath
-	 */
-	 public  void createLinePic ()
-	    {
-		 //´´½¨Öù×´Í¼
-		JFreeChart chart = createLineChart();
-		drawToFrame(chart);
-		//drawToOutputStream("D://testcharts//mybook-bar.png", chart);
-		//drawToOutputStream(hashMap.get("destPath").toString(), chart);
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        System.out.println(list);
+        for (int i = 0; i < this.list.size(); i++) {
+            
+            dataset.setValue(Integer.valueOf(list.get(i).get("value").toString()), list.get(i).get("rowKey").toString(), list.get(i).get("columnKey").toString());
+        }
+                  
+        JFreeChart chart  = ChartFactory.createLineChart(
+                title, //å›¾è¡¨çš„æ ‡é¢˜
+                XLableName,  //ç›®å½•è½´çš„æ˜¾ç¤ºæ ‡ç­¾ 
+                YLableName,   //æ•°å€¼è½´çš„æ˜¾ç¤ºæ ‡ç­¾
+                dataset, //æ•°æ®é›†
+                PlotOrientation.VERTICAL,  //å›¾è¡¨æ–¹å¼ï¼šVå‚ç›´;Hæ°´å¹³ 
+                true, // æ˜¯å¦æ˜¾ç¤ºå›¾ä¾‹
+                false, // æ˜¯å¦æ˜¾ç¤ºå·¥å…·æç¤º
+                false // æ˜¯å¦ç”ŸæˆURL
+            );
+        //===============ä¸ºäº†é˜²æ­¢ä¸­æ–‡ä¹±ç ï¼šå¿…é¡»è®¾ç½®å­—ä½“
+        chart.setTitle(new TextTitle(title, new Font("é»‘ä½“", Font.ITALIC, 22)));
+    
+        LegendTitle legend = chart.getLegend(); // è·å–å›¾ä¾‹
+        legend.setItemFont(new Font("å®‹ä½“", Font.BOLD, 12)); //è®¾ç½®å›¾ä¾‹çš„å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+    
+        CategoryPlot plot = (CategoryPlot) chart.getPlot(); // è·å–æŠ˜çº¿å›¾çš„Plotå¯¹è±¡(å®é™…å›¾è¡¨)
+        // è®¾ç½®æŠ˜çº¿å›¾èƒŒæ™¯è‰²ï¼ˆæ³¨æ„ï¼Œç³»ç»Ÿå–è‰²çš„æ—¶å€™è¦ä½¿ç”¨16ä½çš„æ¨¡å¼æ¥æŸ¥çœ‹é¢œè‰²ç¼–ç ï¼Œè¿™æ ·æ¯”è¾ƒå‡†ç¡®ï¼‰
+        plot.setBackgroundPaint(new Color(255, 255, 204));
+        plot.setForegroundAlpha(0.65F); //è®¾ç½®å‰æ™¯è‰²é€æ˜åº¦
+        
+        // è®¾ç½®æ¨ªè™šçº¿å¯è§
+        plot.setRangeGridlinesVisible(true);
+        // è™šçº¿è‰²å½©
+        plot.setRangeGridlinePaint(Color.gray);
+        
+        CategoryAxis h = plot.getDomainAxis(); //è·å–xè½´
+        h.setMaximumCategoryLabelWidthRatio(1.0f);// æ¨ªè½´ä¸Šçš„ Lable æ˜¯å¦å®Œæ•´æ˜¾ç¤º
+        h.setLabelFont(new Font("å®‹ä½“", Font.BOLD, 12));//è®¾ç½®å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+        h.setTickLabelFont(new Font("å®‹ä½“", Font.BOLD, 12));// è½´æ•°å€¼ 
+        //h.setCategoryLabelPositions(CategoryLabelPositions.UP_45);//45åº¦å€¾æ–œ
+        
+        plot.getRangeAxis().setLabelFont(new Font("å®‹ä½“", Font.BOLD, 12)); //Yè½´è®¾ç½®å­—ä½“ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç 
+            
+        // æ²¡æœ‰æ•°æ®çš„æ—¶å€™æ˜¾ç¤ºçš„å†…å®¹
+        plot.setNoDataMessage("æ‰¾ä¸åˆ°å¯ç”¨æ•°æ®...");
+        
+        return chart;
+    }
+        
+    /**
+     * åˆ›å»ºé¥¼å›¾
+     * @param dataset
+     * @return
+     */
+    public  JFreeChart createPieChart(){
+        
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        //æ•°æ®æ ¼å¼
+        //dataset.setValue("javaç¨‹åºè®¾è®¡è¯­è¨€", 10000);
+        //dataset.setValue(key, value)
+        //ä»¥rowKeyä¸ºæ ‡å‡†
+        System.out.println(list);
+        for (int i = 0; i < list.size(); i++) {
+            
+            dataset.setValue(list.get(i).get("pieKey").toString(), Integer.valueOf(list.get(i).get("pieValue").toString()));
+        }
+          
+        JFreeChart  chart = ChartFactory.createPieChart(
+                title, // å›¾è¡¨æ ‡é¢˜
+                dataset, // æ•°æ®é›†
+                true, // æ˜¯å¦æ˜¾ç¤ºå›¾ä¾‹
+                true, // æ˜¯å¦æ˜¾ç¤ºå·¥å…·æç¤º
+                true // æ˜¯å¦ç”ŸæˆURL
+                );
+            
+        //è®¾ç½®æ ‡é¢˜å­—ä½“==ä¸ºäº†é˜²æ­¢ä¸­æ–‡ä¹±ç ï¼šå¿…é¡»è®¾ç½®å­—ä½“
+        chart.setTitle(new TextTitle(title, new Font("é»‘ä½“", Font.ITALIC, 22)));
+        //è®¾ç½®å›¾ä¾‹çš„å­—ä½“==ä¸ºäº†é˜²æ­¢ä¸­æ–‡ä¹±ç ï¼šå¿…é¡»è®¾ç½®å­—ä½“
+        chart.getLegend().setItemFont(new Font("é»‘ä½“", Font.BOLD, 12)); 
+        // è·å–é¥¼å›¾çš„Plotå¯¹è±¡(å®é™…å›¾è¡¨)
+        PiePlot plot = (PiePlot) chart.getPlot(); 
+        //å›¾å½¢è¾¹æ¡†é¢œè‰²   
+        plot.setBaseSectionOutlinePaint(Color.GRAY);   
+        //å›¾å½¢è¾¹æ¡†ç²—ç»†   
+        plot.setBaseSectionOutlineStroke(new BasicStroke(0.0f)); 
+        //è®¾ç½®é¥¼çŠ¶å›¾çš„ç»˜åˆ¶æ–¹å‘ï¼Œå¯ä»¥æŒ‰é¡ºæ—¶é’ˆæ–¹å‘ç»˜åˆ¶ï¼Œä¹Ÿå¯ä»¥æŒ‰é€†æ—¶é’ˆæ–¹å‘ç»˜åˆ¶   
+        plot.setDirection(Rotation.ANTICLOCKWISE);   
+        //è®¾ç½®ç»˜åˆ¶è§’åº¦(å›¾å½¢æ—‹è½¬è§’åº¦)   
+        plot.setStartAngle(70);   
+        //è®¾ç½®çªå‡ºæ˜¾ç¤ºçš„æ•°æ®å—   
+        plot.setExplodePercent("One", 0.1D);  
+        //è®¾ç½®èƒŒæ™¯è‰²é€æ˜åº¦
+        plot.setBackgroundAlpha(0.7F); 
+        // è®¾ç½®å‰æ™¯è‰²é€æ˜åº¦
+        plot.setForegroundAlpha(0.65F); 
+        //è®¾ç½®åŒºå—æ ‡ç­¾çš„å­—ä½“==ä¸ºäº†é˜²æ­¢ä¸­æ–‡ä¹±ç ï¼šå¿…é¡»è®¾ç½®å­—ä½“
+        plot.setLabelFont(new Font("éš¶ä¹¦", Font.PLAIN, 12)); 
+        // æ‰‡åŒºåˆ†ç¦»æ˜¾ç¤º,å¯¹3Då›¾ä¸èµ·æ•ˆ
+        //plot.setExplodePercent(dataset.getKey(3), 0.1D);
+        // å›¾ä¾‹æ˜¾ç¤ºç™¾åˆ†æ¯”:è‡ªå®šä¹‰æ–¹å¼ï¼Œ{0} è¡¨ç¤ºé€‰é¡¹ï¼Œ {1} è¡¨ç¤ºæ•°å€¼ï¼Œ {2} è¡¨ç¤ºæ‰€å æ¯”ä¾‹ ,å°æ•°ç‚¹åä¸¤ä½
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator(
+                "{0}:{1}/r/n({2})", NumberFormat.getNumberInstance(),
+                new DecimalFormat("0.00%")));
+        // å›¾ä¾‹æ˜¾ç¤ºç™¾åˆ†æ¯”
+        // plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator("{0}={1}({2})"));
+        // æŒ‡å®šæ˜¾ç¤ºçš„é¥¼å›¾ä¸ºï¼šåœ†å½¢(true) è¿˜æ˜¯æ¤­åœ†å½¢(false)
+        plot.setCircular(false);
+        // æ²¡æœ‰æ•°æ®çš„æ—¶å€™æ˜¾ç¤ºçš„å†…å®¹
+        plot.setNoDataMessage("æ‰¾ä¸åˆ°å¯ç”¨æ•°æ®...");    
+        
+        //è®¾ç½®é¼ æ ‡æ‚¬åœæç¤º
+        plot.setToolTipGenerator(new StandardPieToolTipGenerator());
+        //è®¾ç½®çƒ­ç‚¹é“¾æ¥
+        plot.setURLGenerator(new StandardPieURLGenerator("detail.jsp"));
+        
+        return chart;
+    }
+    
+    /**
+     *  è¾“å‡ºå›¾è¡¨åˆ°Swing Frame
+     * @param chart
+     */
+    public  void drawToFrame(JFreeChart chart){
+        //è¾“å‡ºå›¾è¡¨åˆ°Swing Frame
+        ChartFrame frame = new ChartFrame("åŸåˆ›å›¾ä¹¦é”€é‡ç»Ÿè®¡", chart);
+        frame.pack();
+        frame.setVisible(true);
+    }
+    
+    /**
+     *  è¾“å‡ºå›¾è¡¨åˆ°æŒ‡å®šçš„ç£ç›˜
+     * @param destPath
+     * @param chart
+     */
+    public  void drawToOutputStream(String destPath, JFreeChart chart) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(destPath);
+            // ChartUtilities.writeChartAsJPEG(
+            ChartUtilities.writeChartAsPNG(fos, // æŒ‡å®šç›®æ ‡è¾“å‡ºæµ
+                    chart, // å›¾è¡¨å¯¹è±¡
+                    600, // å®½
+                    500, // é«˜
+                    null); // ChartRenderingInfoä¿¡æ¯
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    /**
+     * åˆ›å»ºæŸ±çŠ¶å›¾å›¾è¡¨å›¾ç‰‡    
+     * @param hashMapä¸­æœ‰ï¼š
+     * @param chartList
+     * @param String title 
+     * @param String XLableName
+     * @param String YLableName
+     * @param String isPieChart3D
+     * @param String destPath
+     */
+     public  void createBarPic ()
+        {
+        JFreeChart chart = createBarChart();
+        
+        //drawToOutputStream("D://testcharts//mybook-bar.png", chart);
+        //drawToOutputStream(hashMap.get("destPath").toString(), chart);
+        drawToFrame(chart);
+        }       
+     
+     
+     /**
+     * åˆ›å»ºé¥¼å›¾å›¾è¡¨å›¾ç‰‡ 
+     * @param hashMapä¸­æœ‰ï¼š
+     * @param chartList
+     * @param String title 
+     * @param String isBarChart
+     * @param String destPath
+     */
+     public  void createPiePic ()
+        {
+         //åˆ›å»ºæŸ±çŠ¶å›¾
+        JFreeChart chart = createPieChart();
+        drawToFrame(chart);
+        //drawToOutputStream("D://testcharts//mybook-bar.png", chart);
+        //drawToOutputStream(hashMap.get("destPath").toString(), chart);
+                    
+        }
+     
+     /**
+     * åˆ›å»ºæŠ˜çº¿å›¾å›¾è¡¨å›¾ç‰‡    
+     * @param hashMapä¸­æœ‰ï¼š
+     * @param chartList
+     * @param String title 
+     * @param String isBarChart
+     * @param String destPath
+     */
+     public  void createLinePic ()
+        {
+         //åˆ›å»ºæŸ±çŠ¶å›¾
+        JFreeChart chart = createLineChart();
+        drawToFrame(chart);
+        //drawToOutputStream("D://testcharts//mybook-bar.png", chart);
+        //drawToOutputStream(hashMap.get("destPath").toString(), chart);
      }
-	 
-//	 public List findBySqls(){
-//		 
-//		 List tempList = new ArrayList();
-//		 
-//		 //tempList =  this.findSqlList("select goods_code as aaa from goods");
-//		 tempList = this.executeSqlList("select goods_code as aaa from goods");
-//		 return tempList;
-//	 }
-	 
-	  public static  void main(String args[]){
-		  
-		  JfreeChartsUtil jc = new JfreeChartsUtil();
+     
+//   public List findBySqls(){
+//       
+//       List tempList = new ArrayList();
+//       
+//       //tempList =  this.findSqlList("select goods_code as aaa from goods");
+//       tempList = this.executeSqlList("select goods_code as aaa from goods");
+//       return tempList;
+//   }
+     
+      public static  void main(String args[]){
+          
+          JfreeChartsUtil jc = new JfreeChartsUtil();
 
-		  HashMap<Object,Object> hashMap = new HashMap<Object, Object>();
-		  List<HashMap<Object, Object>> list = new ArrayList<HashMap<Object,Object>>();
-		  HashMap<Object, Object> chartMap = new HashMap<Object, Object>();
-		  HashMap<Object, Object> chartMap1 = new HashMap<Object, Object>();
-		  HashMap<Object, Object> chartMap2 = new HashMap<Object, Object>();
-		  HashMap<Object, Object> chartMap3 = new HashMap<Object, Object>();
-		  HashMap<Object, Object> chartMap4 = new HashMap<Object, Object>();
-		  HashMap<Object, Object> chartMap5 = new HashMap<Object, Object>();
-		  HashMap<Object, Object> chartMap6 = new HashMap<Object, Object>();
-		  HashMap<Object, Object> chartMap7 = new HashMap<Object, Object>();
-		  chartMap.put("value", 1000);
-		  chartMap.put("rowKey", "±±¾©");
-		  chartMap.put("columnKey", "coreJava");
-		  
-		  chartMap1.put("value", 1500);
-		  chartMap1.put("rowKey", "ÉÏº£");
-		  chartMap1.put("columnKey", "coreJava");
-		  
-		  chartMap2.put("value", 2000);
-		  chartMap2.put("rowKey", "º¼Öİ");
-		  chartMap2.put("columnKey", "coreJava");
-		  
-		  chartMap3.put("value", 2500);
-		  chartMap3.put("rowKey", "ÏåÑô");
-		  chartMap3.put("columnKey", "coreJava");
-		  
-		  chartMap4.put("value", 3000);
-		  chartMap4.put("rowKey", "±±¾©");
-		  chartMap4.put("columnKey", "Android");
-		  
-		  chartMap5.put("value", 1533);
-		  chartMap5.put("rowKey", "ÉÏº£");
-		  chartMap5.put("columnKey", "Android");
-		  
-		  chartMap6.put("value", 2300);
-		  chartMap6.put("rowKey", "º¼Öİ");
-		  chartMap6.put("columnKey", "Android");
-		  
-		  chartMap7.put("value", 2220);
-		  chartMap7.put("rowKey", "ÏåÑô");
-		  chartMap7.put("columnKey", "Android");
+          HashMap<Object,Object> hashMap = new HashMap<Object, Object>();
+          List<HashMap<Object, Object>> list = new ArrayList<HashMap<Object,Object>>();
+          HashMap<Object, Object> chartMap = new HashMap<Object, Object>();
+          HashMap<Object, Object> chartMap1 = new HashMap<Object, Object>();
+          HashMap<Object, Object> chartMap2 = new HashMap<Object, Object>();
+          HashMap<Object, Object> chartMap3 = new HashMap<Object, Object>();
+          HashMap<Object, Object> chartMap4 = new HashMap<Object, Object>();
+          HashMap<Object, Object> chartMap5 = new HashMap<Object, Object>();
+          HashMap<Object, Object> chartMap6 = new HashMap<Object, Object>();
+          HashMap<Object, Object> chartMap7 = new HashMap<Object, Object>();
+          chartMap.put("value", 1000);
+          chartMap.put("rowKey", "åŒ—äº¬");
+          chartMap.put("columnKey", "coreJava");
+          
+          chartMap1.put("value", 1500);
+          chartMap1.put("rowKey", "ä¸Šæµ·");
+          chartMap1.put("columnKey", "coreJava");
+          
+          chartMap2.put("value", 2000);
+          chartMap2.put("rowKey", "æ­å·");
+          chartMap2.put("columnKey", "coreJava");
+          
+          chartMap3.put("value", 2500);
+          chartMap3.put("rowKey", "è¥„é˜³");
+          chartMap3.put("columnKey", "coreJava");
+          
+          chartMap4.put("value", 3000);
+          chartMap4.put("rowKey", "åŒ—äº¬");
+          chartMap4.put("columnKey", "Android");
+          
+          chartMap5.put("value", 1533);
+          chartMap5.put("rowKey", "ä¸Šæµ·");
+          chartMap5.put("columnKey", "Android");
+          
+          chartMap6.put("value", 2300);
+          chartMap6.put("rowKey", "æ­å·");
+          chartMap6.put("columnKey", "Android");
+          
+          chartMap7.put("value", 2220);
+          chartMap7.put("rowKey", "è¥„é˜³");
+          chartMap7.put("columnKey", "Android");
 
-		  list.add(chartMap);
-		  list.add(chartMap1);
-		  list.add(chartMap2);
-		  list.add(chartMap3);
-		  list.add(chartMap4);
-		  list.add(chartMap5);
-		  list.add(chartMap6);
-		  list.add(chartMap7);
+          list.add(chartMap);
+          list.add(chartMap1);
+          list.add(chartMap2);
+          list.add(chartMap3);
+          list.add(chartMap4);
+          list.add(chartMap5);
+          list.add(chartMap6);
+          list.add(chartMap7);
 
-		  JfreeChartsUtil jcu = new JfreeChartsUtil();
-		 // jcu.setList(list);
-		  jcu.setTitle("²âÊÔ±êÌâ");
-		  jcu.setXLableName("xÖá");
-		  jcu.setYLableName("yÖá");
-		  //jcu.setDestPath("D://testcharts//mybook-bar.png");
-		//  jcu.createBarPic();
-		  //jcu.createLinePic();
-		  List<HashMap<Object, Object>> listPie = new ArrayList<HashMap<Object,Object>>();
-		  HashMap<Object, Object> pieMap = new HashMap<Object, Object>();
-		  pieMap.put("pieKey", "ÖĞ¹ú");
-		  pieMap.put("pieValue", 299);
-		  HashMap<Object, Object> pieMap1 = new HashMap<Object, Object>();
-		  pieMap1.put("pieKey", "ÖĞ¹ú1");
-		  pieMap1.put("pieValue", 299);
-		  HashMap<Object, Object> pieMap2 = new HashMap<Object, Object>();
-		  pieMap2.put("pieKey", "ÖĞ¹ú2");
-		  pieMap2.put("pieValue", 299);
-		  HashMap<Object, Object> pieMap3 = new HashMap<Object, Object>();
-		  pieMap3.put("pieKey", "ÖĞ¹ú3");
-		  pieMap3.put("pieValue", 299);
-		  listPie.add(pieMap);
-		  listPie.add(pieMap1);
-		  listPie.add(pieMap2);
-		  //listPie.add(pieMap3);
-	
-		  jcu.setList(listPie);
-		  jcu.createPiePic();
-		  
-		  
-	  }
+          JfreeChartsUtil jcu = new JfreeChartsUtil();
+         // jcu.setList(list);
+          jcu.setTitle("æµ‹è¯•æ ‡é¢˜");
+          jcu.setXLableName("xè½´");
+          jcu.setYLableName("yè½´");
+          //jcu.setDestPath("D://testcharts//mybook-bar.png");
+        //  jcu.createBarPic();
+          //jcu.createLinePic();
+          List<HashMap<Object, Object>> listPie = new ArrayList<HashMap<Object,Object>>();
+          HashMap<Object, Object> pieMap = new HashMap<Object, Object>();
+          pieMap.put("pieKey", "ä¸­å›½");
+          pieMap.put("pieValue", 299);
+          HashMap<Object, Object> pieMap1 = new HashMap<Object, Object>();
+          pieMap1.put("pieKey", "ä¸­å›½1");
+          pieMap1.put("pieValue", 299);
+          HashMap<Object, Object> pieMap2 = new HashMap<Object, Object>();
+          pieMap2.put("pieKey", "ä¸­å›½2");
+          pieMap2.put("pieValue", 299);
+          HashMap<Object, Object> pieMap3 = new HashMap<Object, Object>();
+          pieMap3.put("pieKey", "ä¸­å›½3");
+          pieMap3.put("pieValue", 299);
+          listPie.add(pieMap);
+          listPie.add(pieMap1);
+          listPie.add(pieMap2);
+          jcu.setList(listPie);
+          jcu.createPiePic();
+          
+      }
 
 }
