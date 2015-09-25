@@ -7,7 +7,10 @@
   <packaging>war</packaging>
   <name>marinefirstmaven</name>
   <description>marinedemomaven</description>
- 
+   <properties>
+    <springframework.version>3.1.1.RELEASE</springframework.version>
+    <struts2.version>2.3.20</struts2.version>
+  </properties>
      <dependencies>
      <dependency>
      <groupId>org.jfree</groupId>
@@ -290,19 +293,20 @@
         <artifactId>httpclient</artifactId>
         <version>4.3</version>
     </dependency>
-    
       <!-- Struts2-core 依赖 -->
        <dependency>
-             <groupId>org.apache.struts2</groupId>
+             <groupId>org.apache.struts</groupId>
              <artifactId>struts2-core</artifactId>
-          <!--  <version>${struts2.version}</version> -->
-            <version>2.3.20</version>
+             <version>${struts2.version}</version>
        </dependency>
-        
-  </dependencies>
+        <!-- Hibernate-core 依赖 -->
+       <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>4.3.6.Final</version>
+    </dependency>
+    </dependencies>
    
-   
-    
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
