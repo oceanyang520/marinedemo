@@ -1,4 +1,4 @@
-package main.java.com.marine.entity;
+package main.java.com.marine.frame.entity;
 
 public class User {
 	

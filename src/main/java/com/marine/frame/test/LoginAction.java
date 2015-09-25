@@ -1,6 +1,7 @@
-package main.java.com.marine.test;
-import main.java.com.marine.base.BaseAction;
-import main.java.com.marine.test.impl.LoginImpl;
+package main.java.com.marine.frame.test;
+
+import main.java.com.marine.frame.base.BaseAction;
+import main.java.com.marine.frame.test.impl.LoginImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

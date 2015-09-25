@@ -1,4 +1,4 @@
-package main.java.com.marine.commons.jfreecharts;
+package main.java.com.marine.frame.commons.jfreecharts;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

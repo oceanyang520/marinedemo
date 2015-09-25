@@ -1,9 +1,9 @@
-package main.java.com.marine.test.impl;
+package main.java.com.marine.frame.test.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.com.marine.entity.User;
+import main.java.com.marine.frame.entity.User;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;

@@ -1,4 +1,4 @@
-package main.java.com.marine.base;
+package main.java.com.marine.frame.base;
 import com.opensymphony.xwork2.ActionSupport;
 
 
