@@ -26,12 +26,10 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.chart.urls.StandardPieURLGenerator;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
-import org.junit.Test;
+
 
 public class JfreeChartsUtil extends JfreeChartModel {
 
