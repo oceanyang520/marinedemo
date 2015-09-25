@@ -1,3 +1,5 @@
+package test.java;
+
 import java.io.UnsupportedEncodingException;
 
 import org.junit.Test;

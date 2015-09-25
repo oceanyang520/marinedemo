@@ -1,4 +1,4 @@
-
+package test.java;
 
 import java.awt.Color;
 import java.awt.Font;

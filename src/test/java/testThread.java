@@ -1,3 +1,4 @@
+package test.java;
 
 public class testThread extends Thread {
     
